@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hassan Karim — Lead Qualification Platform | Altum Dealership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0A0E1A;
+    --navy2:   #0F1528;
+    --navy3:   #161D35;
+    --blue:    #2563EB;
+    --blue-lt: #3B82F6;
+    --blue-glow: rgba(37,99,235,0.18);
+    --amber:   #F59E0B;
+    --amber-lt:#FCD34D;
+    --white:   #F8FAFC;
+    --slate:   #64748B;
+    --slate-lt:#94A3B8;
+    --green:   #10B981;
+    --red:     #EF4444;
+    --orange:  #F97316;
+    --border:  rgba(255,255,255,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h1, h2, h3, .display { font-family: 'Space Grotesk', sans-serif; }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(10,14,26,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .nav-logo span { color: var(--blue-lt); }
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 9px 22px;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--blue-lt); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse at center, rgba(37,99,235,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(37,99,235,0.12);
+    border: 1px solid rgba(37,99,235,0.3);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue-lt);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .eyebrow-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue-lt);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: var(--white);
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--slate-lt);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: var(--blue-lt); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--slate-lt);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+
+  /* ── LIVE SCORING CARD (signature element) ── */
+  .scoring-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+  }
+  .card-header {
+    background: var(--navy3);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-dots { display: flex; gap: 6px; }
+  .card-dots span {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .d1 { background: #EF4444; }
+  .d2 { background: #F59E0B; }
+  .d3 { background: #10B981; }
+  .card-title {
+    font-size: 12px;
+    color: var(--slate);
+    font-weight: 500;
+    margin-left: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .card-body { padding: 20px; }
+
+  .lead-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .lead-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563EB, #7C3AED);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    flex-shrink: 0;
+  }
+  .lead-name {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white);
+  }
+  .lead-meta { font-size: 11px; color: var(--slate); }
+
+  .wa-badge {
+    margin-left: auto;
+    background: rgba(37,211,102,0.12);
+    border: 1px solid rgba(37,211,102,0.25);
+    color: #25D366;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .questions-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+  .q-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--navy);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+    transition: all 0.4s;
+  }
+  .q-label { color: var(--slate-lt); font-weight: 500; }
+  .q-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .q-value.shown { opacity: 1; }
+  .q-value.good { color: var(--green); }
+  .q-value.warn { color: var(--orange); }
+  .q-value.bad  { color: var(--red); }
+
+  .score-bar-wrap { margin-bottom: 16px; }
+  .score-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 6px;
+    color: var(--slate);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .score-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    transition: color 0.4s;
+  }
+  .score-bar {
+    height: 6px;
+    background: var(--navy);
+    border-radius: 100px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .score-fill {
+    height: 100%;
+    border-radius: 100px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s;
+    background: var(--blue);
+  }
+
+  .filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    transition: all 0.5s;
+    opacity: 0;
+    transform: translateY(4px);
+    background: rgba(37,99,235,0.1);
+    border: 1px solid rgba(37,99,235,0.2);
+    color: var(--blue-lt);
+    width: 100%;
+    justify-content: center;
+  }
+  .filter-tag.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .filter-tag.filter-a {
+    background: rgba(16,185,129,0.12);
+    border-color: rgba(16,185,129,0.3);
+    color: var(--green);
+  }
+  .filter-tag.filter-b {
+    background: rgba(249,115,22,0.12);
+    border-color: rgba(249,115,22,0.3);
+    color: var(--orange);
+  }
+  .filter-tag.reject {
+    background: rgba(239,68,68,0.12);
+    border-color: rgba(239,68,68,0.3);
+    color: var(--red);
+  }
+
+  /* ── SECTION SHARED ── */
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-lt);
+    margin-bottom: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--slate-lt);
+    line-height: 1.7;
+    max-width: 580px;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .problem-section { padding: 100px 0; }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .problem-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(239,68,68,0.5), transparent);
+  }
+  .problem-icon { font-size: 28px; margin-bottom: 14px; }
+  .problem-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .problem-card p { font-size: 14px; color: var(--slate-lt); line-height: 1.6; }
+
+  /* ── SOLUTION / ROADMAP ── */
+  .solution-section { padding: 100px 0; }
+  .solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 56px;
+  }
+
+  .roadmap { display: flex; flex-direction: column; gap: 0; }
+  .roadmap-item {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 36px;
+    position: relative;
+  }
+  .roadmap-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 42px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--blue), transparent);
+  }
+  .roadmap-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy2);
+    border: 2px solid var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--blue-lt);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .roadmap-content { padding-top: 6px; }
+  .roadmap-step-label {
+    font-size: 11px;
+    color: var(--slate);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 6px;
+  }
+  .roadmap-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .roadmap-content p { font-size: 14px; color: var(--slate-lt); line-height: 1.6; }
+
+  /* deliverables list */
+  .deliverables {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .del-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--slate-lt);
+    transition: border-color 0.2s;
+  }
+  .del-item:hover { border-color: rgba(37,99,235,0.4); }
+  .del-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(37,99,235,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .del-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 2px;
+  }
+
+  /* ── TECH STACK ── */
+  .tech-section { padding: 80px 0; }
+  .tech-section .section-title,
+  .tech-section .section-eyebrow { text-align: center; }
+  .tech-section .section-desc { text-align: center; margin: 0 auto 48px; }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .tech-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .tech-card:hover { border-color: rgba(37,99,235,0.4); transform: translateY(-2px); }
+  .tech-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .tech-info strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .tech-info span { font-size: 11px; color: var(--slate); }
+
+  /* ── TIMELINE / MILESTONES ── */
+  .timeline-section { padding: 100px 0; }
+  .milestones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 48px;
+  }
+  .milestone-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 24px;
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.2s;
+  }
+  .milestone-row:hover { border-color: rgba(37,99,235,0.35); }
+  .ms-week {
+    font-size: 11px;
+    color: var(--blue-lt);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .ms-title {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .ms-desc { font-size: 12px; color: var(--slate); }
+  .ms-tag {
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    background: rgba(37,99,235,0.1);
+    border: 1px solid rgba(37,99,235,0.25);
+    color: var(--blue-lt);
+  }
+  .ms-tag.amber {
+    background: rgba(245,158,11,0.1);
+    border-color: rgba(245,158,11,0.25);
+    color: var(--amber);
+  }
+  .ms-tag.green {
+    background: rgba(16,185,129,0.1);
+    border-color: rgba(16,185,129,0.25);
+    color: var(--green);
+  }
+
+  /* ── BUDGET ── */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .budget-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .budget-card.featured {
+    border-color: rgba(37,99,235,0.4);
+    background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, var(--navy2) 100%);
+  }
+  .budget-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  }
+  .budget-label {
+    font-size: 11px;
+    color: var(--slate);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 12px;
+  }
+  .budget-amount {
+    font-size: 48px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .budget-card.featured .budget-amount { color: var(--blue-lt); }
+  .budget-sub { font-size: 13px; color: var(--slate-lt); }
+
+  /* ── PROOF / PORTFOLIO ── */
+  .proof-section { padding: 100px 0; }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .proof-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+  .proof-card:hover { border-color: rgba(37,99,235,0.35); }
+  .proof-url {
+    font-size: 12px;
+    color: var(--blue-lt);
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .proof-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+  .proof-card p { font-size: 13px; color: var(--slate-lt); line-height: 1.6; }
+  .proof-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .proof-tag {
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--navy);
+    border: 1px solid var(--border);
+    color: var(--slate-lt);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute;
+    bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(37,99,235,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section .section-title { font-size: clamp(30px, 4vw, 48px); margin-bottom: 16px; }
+  .cta-section .section-desc { margin: 0 auto 48px; max-width: 540px; text-align: center; }
+
+  .cta-box {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--navy2);
+    border: 1px solid rgba(37,99,235,0.3);
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-question {
+    font-size: 15px;
+    color: var(--slate-lt);
+    font-style: italic;
+    margin-bottom: 28px;
+    line-height: 1.6;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+  }
+  .cta-contact { display: flex; flex-direction: column; gap: 12px; }
+  .cta-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cta-link:hover { border-color: rgba(37,99,235,0.5); transform: translateX(4px); }
+  .cta-link-icon {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .cta-link-sub { font-size: 11px; color: var(--slate); font-weight: 400; margin-top: 1px; }
+
+  .cta-main-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #1D4ED8, #2563EB);
+    color: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 24px;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 32px rgba(37,99,235,0.3);
+    text-align: center;
+  }
+  .cta-main-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,99,235,0.4); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    text-align: center;
+  }
+  footer p { font-size: 13px; color: var(--slate); }
+  footer span { color: var(--blue-lt); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .scoring-card { display: none; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .solution-grid { grid-template-columns: 1fr; }
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .budget-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .milestone-row { grid-template-columns: 60px 1fr; }
+    .ms-tag { display: none; }
+    .container { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Hassan <span>Karim</span> · Full-Stack Developer</div>
+  <a href="https://www.upwork.com/freelancers/~0146024e7b17ad1e9a" target="_blank" class="nav-cta">Let's Talk →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Proposal for Altum Dealership
+        </div>
+        <h1>
+          Your leads deserve<br>
+          a <em>system</em>, not<br>
+          a spreadsheet.
+        </h1>
+        <p class="hero-sub">
+          A custom lead qualification platform — WhatsApp-integrated, score-routed, 
+          and built for your BDC team across Houston and Wheeling, IL.
+        </p>
+        <div class="hero-actions">
+          <a href="https://www.upwork.com/freelancers/~0146024e7b17ad1e9a" target="_blank" class="btn-primary">Start Milestone 1 This Week →</a>
+          <a href="#roadmap" class="btn-ghost">See the Plan</a>
+        </div>
+      </div>
+
+      <!-- SIGNATURE: Live Lead Scoring Card -->
+      <div class="scoring-card" id="scoringCard">
+        <div class="card-header">
+          <div class="card-dots">
+            <span class="d1"></span>
+            <span class="d2"></span>
+            <span class="d3"></span>
+          </div>
+          <span class="card-title">Altum BDC · Lead Qualifier</span>
+        </div>
+        <div class="card-body">
+          <div class="lead-info">
+            <div class="lead-avatar" id="leadAvatar">RG</div>
+            <div>
+              <div class="lead-name" id="leadName">Roberto Garza</div>
+              <div class="lead-meta" id="leadMeta">Houston TX · Inbound via WhatsApp</div>
+            </div>
+            <div class="wa-badge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.124 1.532 5.85L0 24l6.302-1.506A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.796 9.796 0 01-5.003-1.368l-.36-.213-3.732.891.924-3.634-.235-.374A9.796 9.796 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+              WhatsApp
+            </div>
+          </div>
+
+          <div class="questions-list">
+            <div class="q-item">
+              <span class="q-label">Credit Score Range</span>
+              <span class="q-value good" id="q1">620+ ✓</span>
+            </div>
+            <div class="q-item">
+              <span class="q-label">Down Payment</span>
+              <span class="q-value good" id="q2">$2,500 ✓</span>
+            </div>
+            <div class="q-item">
+              <span class="q-label">Active Bank Account</span>
+              <span class="q-value good" id="q3">Yes ✓</span>
+            </div>
+            <div class="q-item">
+              <span class="q-label">ID Type</span>
+              <span class="q-value warn" id="q4">ITIN ⚠</span>
+            </div>
+            <div class="q-item">
+              <span class="q-label">Trade-In Vehicle</span>
+              <span class="q-value good" id="q5">Yes ✓</span>
+            </div>
+          </div>
+
+          <div class="score-bar-wrap">
+            <div class="score-label-row">
+              <span>Qualification Score</span>
+              <span class="score-num" id="scoreNum">0</span>
+            </div>
+            <div class="score-bar">
+              <div class="score-fill" id="scoreFill"></div>
+            </div>
+          </div>
+
+          <div class="filter-tag" id="filterTag">
+            Calculating...
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <p class="section-eyebrow">The Problem</p>
+    <h2 class="section-title">Good leads go cold.<br>Your BDC team doesn't have time to sort them.</h2>
+    <p class="section-desc">Without an automated scoring system, every lead — whether they're ready to buy or completely unqualified — gets the same follow-up effort. That means wasted time, missed buyers, and revenue left on the table.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">📉</div>
+        <h3>No Lead Prioritization</h3>
+        <p>Filter A buyers (ready to close) compete with unqualified leads for your BDC team's attention. The best prospects wait while the team chases dead ends.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📲</div>
+        <h3>WhatsApp Without Structure</h3>
+        <p>Your Hispanic market communicates on WhatsApp — but without a system, responses are manual, inconsistent, and impossible to track across two locations.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🏢</div>
+        <h3>Two Locations, Zero Visibility</h3>
+        <p>Houston TX and Wheeling IL operate as silos. No shared dashboard, no cross-location reporting, no way to see the full pipeline at a glance.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔄</div>
+        <h3>Manual Scoring is Slow</h3>
+        <p>Every qualification question answered manually means delays of hours — or days. By then, the buyer has already gone to a competitor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION / ROADMAP -->
+<section class="solution-section" id="roadmap">
+  <div class="container">
+    <p class="section-eyebrow">The Solution</p>
+    <h2 class="section-title">Here is exactly how<br>I will deliver this.</h2>
+    <p class="section-desc">Three phases. Zero surprises. Full visibility at every step.</p>
+
+    <div class="solution-grid">
+      <div class="roadmap">
+        <div class="roadmap-item">
+          <div class="roadmap-dot">1</div>
+          <div class="roadmap-content">
+            <div class="roadmap-step-label">Week 1–2 · Phase 1</div>
+            <h3>Discovery</h3>
+            <p>Lock specs, milestones, and deliverables. Finalize the scoring logic for Filter A / B / Reject, confirm 360dialog credentials, define data separation rules for Houston and Wheeling.</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot">2</div>
+          <div class="roadmap-content">
+            <div class="roadmap-step-label">Week 3–9 · Phase 2</div>
+            <h3>Execution</h3>
+            <p>Weekly video updates + a live staging link from Day 1. You can track, test, and give feedback in real time — no waiting until the end to see what was built.</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot">3</div>
+          <div class="roadmap-content">
+            <div class="roadmap-step-label">Week 10 · Phase 3</div>
+            <h3>Handover</h3>
+            <p>Full QA testing, live walkthrough with your BDC team, complete documentation, and code committed to your GitHub repository. You own everything.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="deliverables">
+        <p style="font-size:12px;color:var(--slate);letter-spacing:0.08em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:8px;">What Gets Built</p>
+        <div class="del-item">
+          <div class="del-icon">🎯</div>
+          <div class="del-text">
+            <strong>5-Question Scoring Engine</strong>
+            Credit score, down payment, bank account, ID type, trade-in — auto-routes to Filter A, B, or Reject.
+          </div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">💬</div>
+          <div class="del-text">
+            <strong>WhatsApp API Integration (360dialog)</strong>
+            Automated outbound messages + inbound response handling with webhook processing.
+          </div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">📊</div>
+          <div class="del-text">
+            <strong>BDC Dashboard</strong>
+            Lead history, scores, follow-up status, and filter breakdown — per location.
+          </div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">🏪</div>
+          <div class="del-text">
+            <strong>Dual Dealer Accounts</strong>
+            Houston TX + Wheeling IL — separate data, separate BDC views, one admin panel.
+          </div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">🌐</div>
+          <div class="del-text">
+            <strong>Pre-Qualification Landing Page</strong>
+            5-question form feeds directly into the scoring system. Spanish-language ready.
+          </div>
+        </div>
+        <div class="del-item">
+          <div class="del-icon">📦</div>
+          <div class="del-text">
+            <strong>GitHub Handover + Docs</strong>
+            All code committed to your repo. Work for Hire — IP is 100% yours.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="tech-section">
+  <div class="container">
+    <p class="section-eyebrow">Tech Stack</p>
+    <h2 class="section-title">Exactly what you specified.</h2>
+    <p class="section-desc">No substitutions. No surprises. Built on the stack you outlined — so your team can maintain it long-term.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(0,0,0,0.3);">⚛️</div>
+        <div class="tech-info">
+          <strong>Next.js (React)</strong>
+          <span>Frontend · App Router</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(16,185,129,0.1);">🟢</div>
+        <div class="tech-info">
+          <strong>Node.js + Express</strong>
+          <span>Backend API</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(37,99,235,0.1);">🐘</div>
+        <div class="tech-info">
+          <strong>PostgreSQL</strong>
+          <span>Primary Database</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(37,211,102,0.1);">💬</div>
+        <div class="tech-info">
+          <strong>360dialog / Meta API</strong>
+          <span>WhatsApp Business API</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(124,58,237,0.1);">🚂</div>
+        <div class="tech-info">
+          <strong>Railway</strong>
+          <span>Hosting & Deployment</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(255,255,255,0.05);">🐙</div>
+        <div class="tech-info">
+          <strong>GitHub (Client-Owned)</strong>
+          <span>Version Control</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE & BUDGET -->
+<section class="timeline-section">
+  <div class="container">
+    <p class="section-eyebrow">Timeline & Budget</p>
+    <h2 class="section-title">10 weeks. 5 milestones.<br>One fixed price.</h2>
+
+    <div class="milestones">
+      <div class="milestone-row">
+        <div class="ms-week">WK 1–2</div>
+        <div>
+          <div class="ms-title">M1 · Discovery & Architecture</div>
+          <div class="ms-desc">Requirements locked, DB schema, API contracts, repo setup</div>
+        </div>
+        <div class="ms-tag">Foundation</div>
+      </div>
+      <div class="milestone-row">
+        <div class="ms-week">WK 3–5</div>
+        <div>
+          <div class="ms-title">M2 · Scoring Engine + Landing Page</div>
+          <div class="ms-desc">5-question form, Filter A/B/Reject logic, PostgreSQL integration</div>
+        </div>
+        <div class="ms-tag amber">Core Build</div>
+      </div>
+      <div class="milestone-row">
+        <div class="ms-week">WK 5–7</div>
+        <div>
+          <div class="ms-title">M3 · WhatsApp API Integration</div>
+          <div class="ms-desc">360dialog webhooks, automated messaging flows, inbound handling</div>
+        </div>
+        <div class="ms-tag amber">Integration</div>
+      </div>
+      <div class="milestone-row">
+        <div class="ms-week">WK 7–9</div>
+        <div>
+          <div class="ms-title">M4 · BDC Dashboard + Dual Accounts</div>
+          <div class="ms-desc">Role-based dashboard, Houston/Wheeling data separation, follow-up status</div>
+        </div>
+        <div class="ms-tag amber">Dashboard</div>
+      </div>
+      <div class="milestone-row">
+        <div class="ms-week">WK 10</div>
+        <div>
+          <div class="ms-title">M5 · QA, Walkthrough & Handover</div>
+          <div class="ms-desc">Full testing, team walkthrough, documentation, GitHub delivery</div>
+        </div>
+        <div class="ms-tag green">Delivery</div>
+      </div>
+    </div>
+
+    <div class="budget-grid" style="margin-top:32px;">
+      <div class="budget-card featured">
+        <div class="budget-label">Fixed Price</div>
+        <div class="budget-amount">$5,000</div>
+        <div class="budget-sub">Base — all 5 milestones included</div>
+      </div>
+      <div class="budget-card">
+        <div class="budget-label">Timeline</div>
+        <div class="budget-amount">10</div>
+        <div class="budget-sub">weeks · delivery by Week 10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-section">
+  <div class="container">
+    <p class="section-eyebrow">Proof of Work</p>
+    <h2 class="section-title">Systems like this,<br>already shipped.</h2>
+    <p class="section-desc">Your build isn't a first — it's a focused, dealership-specific version of CRM infrastructure I've already built and delivered.</p>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-url">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          wacrm.tech
+        </div>
+        <h3>WhatsApp CRM Platform</h3>
+        <p>Open-source WhatsApp CRM built on Next.js + PostgreSQL + Meta Cloud API. Features shared inbox, multi-agent dashboards, sales pipelines, no-code automations, and real-time analytics — the structural blueprint for your system.</p>
+        <div class="proof-tags">
+          <span class="proof-tag">Next.js</span>
+          <span class="proof-tag">PostgreSQL</span>
+          <span class="proof-tag">WhatsApp API</span>
+          <span class="proof-tag">Multi-Agent</span>
+          <span class="proof-tag">Dashboards</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-url">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          delightchat.io
+        </div>
+        <h3>Multi-Channel Support CRM</h3>
+        <p>Full-stack customer messaging platform handling WhatsApp, Instagram, email, and live chat with role-based team management. Built for high-volume lead and customer communication workflows.</p>
+        <div class="proof-tags">
+          <span class="proof-tag">Node.js</span>
+          <span class="proof-tag">React</span>
+          <span class="proof-tag">WhatsApp</span>
+          <span class="proof-tag">Role-Based</span>
+          <span class="proof-tag">Multi-Channel</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-url">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          github.com/hasankhn1
+        </div>
+        <h3>Code Quality & Structure</h3>
+        <p>Clean, organized repositories demonstrating the MERN stack development practices, component architecture, and API design patterns that will go directly into your platform.</p>
+        <div class="proof-tags">
+          <span class="proof-tag">MERN Stack</span>
+          <span class="proof-tag">TypeScript</span>
+          <span class="proof-tag">Clean Code</span>
+          <span class="proof-tag">React Native</span>
+        </div>
+      </div>
+      <div class="proof-card" style="background:linear-gradient(135deg,rgba(245,158,11,0.06) 0%,var(--navy2) 100%);border-color:rgba(245,158,11,0.2);">
+        <div class="proof-url" style="color:var(--amber);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Work for Hire · Full IP Transfer
+        </div>
+        <h3>You Own Everything</h3>
+        <p>All code committed to your GitHub repository. No licensing fees, no lock-in. Complete documentation and walkthrough for your team so you're never dependent on me after delivery.</p>
+        <div class="proof-tags">
+          <span class="proof-tag">Client-Owned Repo</span>
+          <span class="proof-tag">Full Docs</span>
+          <span class="proof-tag">100% IP Transfer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <p class="section-eyebrow" style="text-align:center;">One Question Before We Start</p>
+    <h2 class="section-title">Ready to lock in<br>Milestone 1 this week?</h2>
+    <p class="section-desc">Before we kick off, one quick thing to confirm for the 360dialog integration:</p>
+
+    <div class="cta-box">
+      <div class="cta-question">
+        "For the 360dialog WhatsApp integration — should lead scores update automatically when responses come in from leads, or will your BDC team review and manually advance each lead through the pipeline?"
+      </div>
+
+      <p style="font-size:12px;color:var(--slate);margin-bottom:16px;font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Reach out on any channel</p>
+      <div class="cta-contact">
+        <a href="https://github.com/hasankhn1" target="_blank" class="cta-link">
+          <div class="cta-link-icon" style="background:rgba(255,255,255,0.07);">🐙</div>
+          <div>
+            <div>github.com/hasankhn1</div>
+            <div class="cta-link-sub">Code samples & project structure</div>
+          </div>
+          <span style="margin-left:auto;color:var(--slate);">→</span>
+        </a>
+        <a href="https://wacrm.tech" target="_blank" class="cta-link">
+          <div class="cta-link-icon" style="background:rgba(37,211,102,0.1);">💬</div>
+          <div>
+            <div>wacrm.tech</div>
+            <div class="cta-link-sub">Live reference — closest public build to yours</div>
+          </div>
+          <span style="margin-left:auto;color:var(--slate);">→</span>
+        </a>
+        <a href="https://delightchat.io" target="_blank" class="cta-link">
+          <div class="cta-link-icon" style="background:rgba(37,99,235,0.1);">📬</div>
+          <div>
+            <div>delightchat.io</div>
+            <div class="cta-link-sub">Multi-channel CRM reference project</div>
+          </div>
+          <span style="margin-left:auto;color:var(--slate);">→</span>
+        </a>
+      </div>
+
+      <a href="https://www.upwork.com/freelancers/~0146024e7b17ad1e9a" target="_blank" class="cta-main-btn">
+        Reply on Upwork — Let's Start This Week →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Built by <span>Hassan Karim</span> · Proposal for Altum Dealership · Fixed Price $5,000 · 10-Week Delivery</p>
+  </div>
+</footer>
+
+<script>
+  // ── LIVE SCORING CARD ANIMATION ──
+  const leads = [
+    {
+      initials: 'RG', name: 'Roberto Garza', meta: 'Houston TX · WhatsApp Inbound',
+      answers: ['620+ ✓','$2,500 ✓','Yes ✓','ITIN ⚠','Yes ✓'],
+      classes: ['good','good','good','warn','good'],
+      score: 78, filter: 'B', filterLabel: '⚡ Filter B — Worth Fighting For'
+    },
+    {
+      initials: 'ML', name: 'Miguel López', meta: 'Wheeling IL · WhatsApp Inbound',
+      answers: ['700+ ✓','$5,000 ✓','Yes ✓','DL ✓','Yes ✓'],
+      classes: ['good','good','good','good','good'],
+      score: 96, filter: 'A', filterLabel: '🔥 Filter A — High Priority'
+    },
+    {
+      initials: 'CR', name: 'Carlos Rivera', meta: 'Houston TX · WhatsApp Inbound',
+      answers: ['< 500 ✗','$500 ✗','No ✗','None ✗','No ✗'],
+      classes: ['bad','bad','bad','bad','bad'],
+      score: 12, filter: 'R', filterLabel: '✕ Reject — Does Not Qualify'
+    },
+    {
+      initials: 'AF', name: 'Ana Flores', meta: 'Wheeling IL · WhatsApp Inbound',
+      answers: ['580+ ✓','$1,500 ✓','Yes ✓','DL ✓','No —'],
+      classes: ['warn','warn','good','good','bad'],
+      score: 64, filter: 'B', filterLabel: '⚡ Filter B — Worth Fighting For'
+    }
+  ];
+
+  let currentLead = 0;
+  let animating = false;
+
+  const qIds = ['q1','q2','q3','q4','q5'];
+
+  function resetCard() {
+    qIds.forEach(id => {
+      const el = document.getElementById(id);
+      el.textContent = '';
+      el.className = 'q-value';
+    });
+    document.getElementById('scoreFill').style.width = '0%';
+    document.getElementById('scoreNum').textContent = '0';
+    const tag = document.getElementById('filterTag');
+    tag.className = 'filter-tag';
+    tag.textContent = 'Analyzing...';
+  }
+
+  function getFilterClass(filter) {
+    if (filter === 'A') return 'filter-a';
+    if (filter === 'B') return 'filter-b';
+    return 'reject';
+  }
+
+  function getBarColor(score) {
+    if (score >= 80) return '#10B981';
+    if (score >= 50) return '#F97316';
+    return '#EF4444';
+  }
+
+  async function animateLead(lead) {
+    animating = true;
+    resetCard();
+
+    await sleep(300);
+    document.getElementById('leadAvatar').textContent = lead.initials;
+    document.getElementById('leadName').textContent = lead.name;
+    document.getElementById('leadMeta').textContent = lead.meta;
+
+    // reveal answers one by one
+    for (let i = 0; i < 5; i++) {
+      await sleep(420);
+      const el = document.getElementById(qIds[i]);
+      el.textContent = lead.answers[i];
+      el.className = 'q-value shown ' + lead.classes[i];
+    }
+
+    await sleep(500);
+
+    // animate score
+    const fill = document.getElementById('scoreFill');
+    const num = document.getElementById('scoreNum');
+    fill.style.background = getBarColor(lead.score);
+    fill.style.width = lead.score + '%';
+
+    let count = 0;
+    const interval = setInterval(() => {
+      count += 3;
+      if (count >= lead.score) { count = lead.score; clearInterval(interval); }
+      num.textContent = count;
+    }, 30);
+
+    await sleep(1200);
+
+    const tag = document.getElementById('filterTag');
+    tag.textContent = lead.filterLabel;
+    tag.className = 'filter-tag visible ' + getFilterClass(lead.filter);
+
+    await sleep(3200);
+    animating = false;
+  }
+
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  async function runLoop() {
+    while (true) {
+      await animateLead(leads[currentLead]);
+      await sleep(600);
+      currentLead = (currentLead + 1) % leads.length;
+    }
+  }
+
+  // Start after brief delay
+  setTimeout(runLoop, 800);
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.problem-card, .del-item, .tech-card, .milestone-row, .proof-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
